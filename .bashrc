@@ -94,7 +94,9 @@ alias l='ls -CF'
 
 
 # custom aliases
-alias cduni='cd /mnt/win/NAS/Qsync/Uni/5_Semester'
+alias e="evince"
+alias n="nautilus"
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
