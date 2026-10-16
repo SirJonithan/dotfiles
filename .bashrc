@@ -121,3 +121,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# rust toolchain (rustup)
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"

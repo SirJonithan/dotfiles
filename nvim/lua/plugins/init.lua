@@ -5,7 +5,6 @@ return {
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -13,17 +12,27 @@ return {
     end,
   },
 
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      return vim.tbl_deep_extend("force", opts, require "configs.cmp")
+    end,
+  },
 
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css", "python",
-        "c", "cpp", "vhdl"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim", "vimdoc", "lua", "luadoc", "printf",
+        "bash", "json", "toml", "yaml", "markdown", "markdown_inline",
+        "python",
+        "c", "cpp", "cmake", "make",
+        "rust",
+        "javascript", "typescript", "tsx", "html", "css",
+        "vhdl",
+      },
+      -- install parsers synchronously when run headless (setup.sh), async otherwise
+      sync_install = #vim.api.nvim_list_uis() == 0,
+    },
   },
 }
