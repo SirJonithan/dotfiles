@@ -12,7 +12,6 @@ DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NVIM_VERSION="${NVIM_VERSION:-v0.11.4}"
 NODE_MAJOR="${NODE_MAJOR:-22}"
 FONT="JetBrainsMono"
-LINKS=(.bashrc .tmux.conf .vimrc .config/nvim)
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -86,9 +85,13 @@ install_font() {
   fc-cache -f "$dir"
 }
 
-# symlink $DOTFILES/<path> to ~/<path>, backing up whatever is there
+# symlink $DOTFILES/<src> to ~/<dst>, backing up whatever is there
 link() {
-  local src="$DOTFILES/$1" dst="$HOME/$1"
+  local src="$DOTFILES/$1" dst="$HOME/$2"
+  if [[ ! -e "$src" ]]; then
+    echo "missing $src" >&2
+    exit 1
+  fi
   [[ -L "$dst" && "$(readlink "$dst")" == "$src" ]] && return
   if [[ -e "$dst" || -L "$dst" ]]; then
     local backup
@@ -103,9 +106,10 @@ link() {
 
 link_dotfiles() {
   log "Linking dotfiles"
-  for path in "${LINKS[@]}"; do
-    link "$path"
-  done
+  link .bashrc .bashrc
+  link .tmux.conf .tmux.conf
+  link .vimrc .vimrc
+  link nvim .config/nvim
 }
 
 bootstrap_nvim() {
