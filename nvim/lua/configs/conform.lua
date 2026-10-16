@@ -2,6 +2,7 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
     python = { "ruff_format" },
+    htmldjango = { "djlint" },
     c = { "clang-format" },
     cpp = { "clang-format" },
     rust = { "rustfmt" },

@@ -25,7 +25,7 @@ return {
       ensure_installed = {
         "vim", "vimdoc", "lua", "luadoc", "printf",
         "bash", "json", "toml", "yaml", "markdown", "markdown_inline",
-        "python",
+        "python", "htmldjango",
         "c", "cpp", "cmake", "make",
         "rust",
         "javascript", "typescript", "tsx", "html", "css",

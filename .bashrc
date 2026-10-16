@@ -122,5 +122,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# rust toolchain (rustup)
+# user-local binaries (setup.sh --cip installs nvim, node, rg here) and rust toolchain (rustup)
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) PATH="$HOME/.local/bin:$PATH" ;; esac
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"

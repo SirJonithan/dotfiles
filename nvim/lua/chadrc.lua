@@ -18,10 +18,11 @@ M.base46 = {
 -- :MasonInstallAll installs every enabled LSP server and conform formatter (+ pkgs)
 M.mason = {
   -- mason names NvChad can't derive (or derives wrongly) from the configs
-  pkgs = { "rust_hdl", "vsg" },
+  pkgs = { "rust_hdl", "vsg", "django-template-lsp" },
   -- rust-analyzer comes from rustup so it always matches the toolchain;
-  -- rust-hdl is NvChad's outdated name for rust_hdl
-  skip = { "rust-analyzer", "rust-hdl" },
+  -- rust-hdl is NvChad's outdated name for rust_hdl;
+  -- superhtml is only the node-free html fallback for setup.sh --python-only
+  skip = { "rust-analyzer", "rust-hdl", "superhtml" },
 }
 
 return M
