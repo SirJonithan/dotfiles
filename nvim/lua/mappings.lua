@@ -14,3 +14,5 @@ map("n", "<leader>dv", function()
 end, { desc = "Toggle diagnostic virtual text" })
 
 map("i", "<C-i>", vim.lsp.buf.signature_help, { desc = "LSP signature help" })
+
+map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })

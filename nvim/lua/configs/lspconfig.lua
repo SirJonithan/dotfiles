@@ -22,6 +22,11 @@ vim.lsp.enable(servers)
 -- html completion inside django templates too
 vim.lsp.config("html", { filetypes = { "html", "templ", "htmldjango" } })
 
+-- run clippy instead of cargo check on save
+vim.lsp.config("rust_analyzer", {
+  settings = { ["rust-analyzer"] = { check = { command = "clippy" } } },
+})
+
 -- read :h vim.lsp.config for changing options of lsp servers, e.g.
 -- vim.lsp.config("pylsp", {
 --   settings = { pylsp = { plugins = { pycodestyle = { maxLineLength = 120 } } } },
